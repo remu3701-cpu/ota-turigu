@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>太田釣具店 | OTA Fishing Tackle — 富山県高岡市伏木湊町</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --washi:#F1E8D7;        /* 和紙 */
+    --washi-deep:#E6D9C0;   /* 焼けた和紙 */
+    --ai:#20415E;           /* 藍 */
+    --ai-deep:#152C41;      /* 濃藍 */
+    --sumi:#2A2520;         /* 墨 */
+    --shu:#C0392F;          /* 朱(浮きの赤) */
+    --kin:#B08D46;          /* 古金 */
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--washi);
+    color:var(--sumi);
+    font-family:'Zen Kaku Gothic New','EB Garamond',sans-serif;
+    line-height:1.9;
+    letter-spacing:.04em;
+  }
+  body.en{font-family:'EB Garamond','Zen Kaku Gothic New',serif;letter-spacing:.01em;}
+  .lang-en{display:none;}
+  body.en .lang-jp{display:none;}
+  body.en .lang-en{display:revert;}
+
+  /* ===== 言語切替 ===== */
+  .lang-toggle{
+    position:fixed;top:18px;right:18px;z-index:50;
+    display:flex;border:1.5px solid var(--sumi);background:var(--washi);
+  }
+  .lang-toggle button{
+    font-family:inherit;font-size:.8rem;padding:.45em 1em;border:none;
+    background:transparent;color:var(--sumi);cursor:pointer;letter-spacing:.1em;
+  }
+  .lang-toggle button.active{background:var(--sumi);color:var(--washi);}
+  .lang-toggle button:focus-visible{outline:2px solid var(--shu);outline-offset:2px;}
+
+  /* ===== 青海波 ===== */
+  .seigaiha{
+    height:70px;
+    background:
+      radial-gradient(circle at 50% 100%, transparent 36%, var(--ai) 37%, var(--ai) 42%, transparent 43%, transparent 56%, var(--ai) 57%, var(--ai) 62%, transparent 63%) 0 0/56px 28px,
+      radial-gradient(circle at 50% 100%, transparent 36%, var(--ai) 37%, var(--ai) 42%, transparent 43%, transparent 56%, var(--ai) 57%, var(--ai) 62%, transparent 63%) 28px 14px/56px 28px;
+    opacity:.16;
+  }
+
+  /* ===== ヒーロー ===== */
+  .hero{
+    min-height:92vh;
+    display:grid;
+    grid-template-columns:1fr auto;
+    align-items:center;
+    max-width:1080px;margin:0 auto;
+    padding:6rem 2rem 3rem;
+    gap:2rem;
+    position:relative;
+  }
+  .hero-title{
+    writing-mode:vertical-rl;
+    font-family:'Shippori Mincho B1',serif;
+    font-weight:800;
+    font-size:clamp(3.4rem,8vw,5.6rem);
+    letter-spacing:.28em;
+    line-height:1.15;
+    color:var(--ai-deep);
+    height:auto;
+    border-right:3px solid var(--sumi);
+    padding-right:.35em;
+  }
+  body.en .hero-title{
+    writing-mode:horizontal-tb;border-right:none;border-bottom:3px solid var(--sumi);
+    padding:0 0 .2em;font-size:clamp(2.6rem,6vw,4.2rem);letter-spacing:.04em;
+  }
+  .hero-copy .eyebrow{
+    display:inline-block;
+    font-size:.85rem;letter-spacing:.3em;
+    color:var(--washi);background:var(--ai);
+    padding:.3em 1em .3em 1.2em;margin-bottom:1.6rem;
+  }
+  .hero-copy h2{
+    font-family:'Shippori Mincho B1',serif;
+    font-weight:600;
+    font-size:clamp(1.5rem,3.4vw,2.2rem);
+    color:var(--sumi);
+    margin-bottom:1.2rem;line-height:1.7;
+  }
+  .hero-copy p{max-width:34em;color:#4a4038;}
+  .hero-uki{
+    position:absolute;bottom:8%;left:2rem;
+    width:26px;opacity:.9;
+    animation:bob 4.5s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg);}50%{transform:translateY(-9px) rotate(4deg);}}
+  @media (prefers-reduced-motion:reduce){.hero-uki{animation:none;}}
+
+  /* ===== 共通セクション ===== */
+  section{max-width:1080px;margin:0 auto;padding:4.5rem 2rem;}
+  .sec-head{display:flex;align-items:center;gap:1rem;margin-bottom:2.5rem;}
+  .sec-head svg{flex:none;}
+  .sec-head h3{
+    font-family:'Shippori Mincho B1',serif;font-weight:600;
+    font-size:clamp(1.4rem,3vw,1.9rem);color:var(--ai-deep);letter-spacing:.12em;
+  }
+  .sec-head .sub{font-size:.8rem;letter-spacing:.25em;color:var(--kin);text-transform:uppercase;}
+
+  /* ===== できること ===== */
+  .offer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem;}
+  .offer{
+    background:var(--washi-deep);
+    border:1.5px solid rgba(42,37,32,.25);
+    padding:1.6rem 1.4rem;
+  }
+  .offer h4{
+    font-family:'Shippori Mincho B1',serif;font-size:1.1rem;color:var(--ai-deep);
+    margin-bottom:.6rem;letter-spacing:.08em;
+  }
+  .offer p{font-size:.92rem;color:#4a4038;line-height:1.8;}
+  .offer .price{display:inline-block;margin-top:.8rem;font-size:.85rem;color:var(--shu);border-top:1px solid var(--shu);padding-top:.3rem;letter-spacing:.06em;}
+
+  /* ===== 雨晴 ===== */
+  .amaharashi{background:var(--ai-deep);color:var(--washi);max-width:none;padding:0;}
+  .amaharashi-inner{max-width:1080px;margin:0 auto;padding:5rem 2rem;}
+  .amaharashi .sec-head h3{color:var(--washi);}
+  .amaharashi .sec-head .sub{color:var(--kin);}
+  .amaharashi p.lead{max-width:38em;margin-bottom:2.5rem;color:#DCE6EF;}
+  .season-table{width:100%;border-collapse:collapse;font-size:.95rem;}
+  .season-table th,.season-table td{
+    border-bottom:1px solid rgba(241,232,215,.25);
+    padding:.9em .6em;text-align:left;vertical-align:top;
+  }
+  .season-table th{
+    font-family:'Shippori Mincho B1',serif;font-weight:600;color:var(--kin);
+    letter-spacing:.1em;white-space:nowrap;width:9em;
+  }
+  .season-table td{color:#E8EFF5;}
+
+  /* ===== 店主より ===== */
+  .voice{display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:start;}
+  .voice-mark{
+    writing-mode:vertical-rl;font-family:'Shippori Mincho B1',serif;
+    font-size:1.05rem;letter-spacing:.3em;color:var(--washi);
+    background:var(--shu);padding:1em .5em;
+  }
+  body.en .voice-mark{writing-mode:horizontal-tb;padding:.4em 1em;letter-spacing:.15em;}
+  .voice blockquote{
+    font-family:'Shippori Mincho B1',serif;font-size:1.08rem;line-height:2.2;
+    max-width:36em;color:#3d352d;
+  }
+  .voice .sig{display:block;margin-top:1.2rem;font-size:.9rem;color:var(--kin);letter-spacing:.15em;}
+
+  /* ===== アクセス ===== */
+  .access-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;}
+  .access dl{font-size:.95rem;}
+  .access dt{
+    font-family:'Shippori Mincho B1',serif;color:var(--ai-deep);
+    letter-spacing:.15em;margin-top:1.3rem;font-weight:600;
+  }
+  .access dt:first-child{margin-top:0;}
+  .access dd{color:#4a4038;margin-top:.2rem;}
+  .map-ph{
+    background:var(--washi-deep);border:1.5px dashed rgba(42,37,32,.4);
+    display:grid;place-items:center;min-height:260px;
+    color:#6b5f52;font-size:.9rem;letter-spacing:.1em;text-align:center;padding:1rem;
+  }
+
+  /* ===== フッター ===== */
+  footer{background:var(--sumi);color:var(--washi);text-align:center;padding:2.5rem 1.5rem;}
+  footer .f-title{font-family:'Shippori Mincho B1',serif;letter-spacing:.35em;font-size:1.05rem;margin-bottom:.6rem;}
+  footer small{opacity:.65;letter-spacing:.08em;}
+
+  @media (max-width:720px){
+    .hero{grid-template-columns:1fr;padding-top:5rem;min-height:auto;}
+    .hero-title{justify-self:end;height:11em;font-size:2.8rem;}
+    .access-grid{grid-template-columns:1fr;}
+    .voice{grid-template-columns:1fr;}
+    .voice-mark{writing-mode:horizontal-tb;justify-self:start;padding:.4em 1em;}
+  }
+</style>
+</head>
+<body>
+
+<div class="lang-toggle" role="group" aria-label="Language">
+  <button id="btn-jp" class="active" onclick="setLang('jp')">日本語</button>
+  <button id="btn-en" onclick="setLang('en')">EN</button>
+</div>
+
+<!-- ヒーロー -->
+<header class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow lang-jp">富山県高岡市 伏木湊町 — 創業百余年の釣具店</span>
+    <span class="eyebrow lang-en">FUSHIKI, TAKAOKA, TOYAMA — A CENTURY-OLD TACKLE SHOP</span>
+    <h2 class="lang-jp">富山湾のことなら、<br>この店に聞け。</h2>
+    <h2 class="lang-en">Ask us anything<br>about Toyama Bay.</h2>
+    <p class="lang-jp">北前船の時代からひらけた港町・伏木で、百年あまり地元の釣り人と歩んできた釣具店です。竿もエサも、今日釣れる場所も。言葉が不安でも大丈夫、身ぶり手ぶりと簡単な英語で、あなたの「初めての日本の釣り」をお手伝いします。</p>
+    <p class="lang-en">For more than a hundred years, our family shop has served the anglers of Fushiki — a port town that flourished in the age of the kitamaebune trading ships. Rods, bait, and honest advice on where the fish are biting today. Don't worry about the language — with simple English and friendly gestures, we'll help you enjoy your first fishing day in Japan.</p>
+  </div>
+  <h1 class="hero-title lang-jp">太田釣具店</h1>
+  <h1 class="hero-title lang-en">OTA<br>TACKLE</h1>
+
+  <!-- 浮き -->
+  <svg class="hero-uki" viewBox="0 0 26 90" aria-hidden="true">
+    <line x1="13" y1="0" x2="13" y2="90" stroke="#2A2520" stroke-width="2"/>
+    <ellipse cx="13" cy="38" rx="11" ry="20" fill="#C0392F"/>
+    <ellipse cx="13" cy="30" rx="11" ry="9" fill="#F1E8D7" opacity=".85"/>
+  </svg>
+</header>
+
+<div class="seigaiha" aria-hidden="true"></div>
+
+<!-- できること -->
+<section id="offer">
+  <div class="sec-head">
+    <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8" fill="none" stroke="#C0392F" stroke-width="2.5"/></svg>
+    <div>
+      <div class="sub">FOR VISITORS</div>
+      <h3 class="lang-jp">旅の人にできること</h3>
+      <h3 class="lang-en">What we can do for travelers</h3>
+    </div>
+  </div>
+  <div class="offer-grid">
+    <div class="offer">
+      <h4 class="lang-jp">釣り道具レンタル</h4>
+      <h4 class="lang-en">Tackle rental</h4>
+      <p class="lang-jp">竿・リール・バケツ・仕掛けの一式をご用意。手ぶらで来て、そのまま海へ。</p>
+      <p class="lang-en">Rod, reel, bucket and rig — a full set. Come empty-handed and walk straight to the sea.</p>
+      <span class="price lang-jp">1日 ¥2,000〜(仮)</span>
+      <span class="price lang-en">From ¥2,000 / day (TBD)</span>
+    </div>
+    <div class="offer">
+      <h4 class="lang-jp">エサ・仕掛け</h4>
+      <h4 class="lang-en">Bait &amp; rigs</h4>
+      <p class="lang-jp">その日の海に合わせて、店主が選びます。「今日は何が釣れる?」と聞いてください。</p>
+      <p class="lang-en">We pick the right bait for that day's sea. Just ask us: "What's biting today?"</p>
+    </div>
+    <div class="offer">
+      <h4 class="lang-jp">釣り場案内</h4>
+      <h4 class="lang-en">Fishing spot advice</h4>
+      <p class="lang-jp">雨晴海岸、伏木港まわりの安全なポイントを手描きの地図でご案内します。</p>
+      <p class="lang-en">We'll mark safe, beginner-friendly spots around Amaharashi Coast and Fushiki Port on a hand-drawn map.</p>
+    </div>
+    <div class="offer">
+      <h4 class="lang-jp">やさしい英語対応</h4>
+      <h4 class="lang-en">Simple English OK</h4>
+      <p class="lang-jp">指さしメニューと翻訳アプリで、だいたい通じます。安心してどうぞ。</p>
+      <p class="lang-en">Point-and-choose menus plus a translation app — we always find a way to communicate.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 雨晴海岸 -->
+<section class="amaharashi" id="amaharashi">
+  <div class="amaharashi-inner">
+    <div class="sec-head">
+      <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 14 L7 6 L11 11 L14 7 L18 14 Z" fill="none" stroke="#B08D46" stroke-width="2"/></svg>
+      <div>
+        <div class="sub">AMAHARASHI COAST</div>
+        <h3 class="lang-jp">立山連峰を眺めながら、釣る。</h3>
+        <h3 class="lang-en">Fish with the Tateyama Alps in view.</h3>
+      </div>
+    </div>
+    <p class="lead lang-jp">店から少し足を伸ばせば、海越しに3,000m級の立山連峰を望む雨晴海岸。世界でもめずらしい風景の中で竿を出せるのが、このまちの自慢です。</p>
+    <p class="lead lang-en">A short trip from the shop lies Amaharashi Coast, where the 3,000-meter peaks of the Tateyama mountains rise beyond the sea. Casting a line into that view is what this town is proudest of.</p>
+    <table class="season-table">
+      <tr>
+        <th class="lang-jp">春(3–5月)</th><th class="lang-en">Spring (Mar–May)</th>
+        <td class="lang-jp">キス、カレイ。おだやかな日が多く、初心者向きの季節。</td>
+        <td class="lang-en">Whiting and flounder. Calm days — the easiest season for beginners.</td>
+      </tr>
+      <tr>
+        <th class="lang-jp">夏(6–8月)</th><th class="lang-en">Summer (Jun–Aug)</th>
+        <td class="lang-jp">アジ、キジハタ。朝夕がねらい目。サビキ釣りが楽しい。</td>
+        <td class="lang-en">Horse mackerel and rock grouper. Best at dawn and dusk — sabiki fishing is great fun.</td>
+      </tr>
+      <tr>
+        <th class="lang-jp">秋(9–11月)</th><th class="lang-en">Autumn (Sep–Nov)</th>
+        <td class="lang-jp">アオリイカ、カマス。一年でいちばん賑やかな海。</td>
+        <td class="lang-en">Bigfin reef squid and barracuda. The liveliest sea of the year.</td>
+      </tr>
+      <tr>
+        <th class="lang-jp">冬(12–2月)</th><th class="lang-en">Winter (Dec–Feb)</th>
+        <td class="lang-jp">寒ブリの季節。海は荒れる日も。まずは店で相談を。</td>
+        <td class="lang-en">Season of the famous winter yellowtail. Seas can be rough — check with us first.</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<!-- 店主より -->
+<section id="voice">
+  <div class="voice">
+    <div class="voice-mark lang-jp">店主より</div>
+    <div class="voice-mark lang-en">FROM THE OWNER</div>
+    <blockquote>
+      <span class="lang-jp">遠くから来てくれた人が、この海で一匹釣って笑ってくれる。それがいちばん嬉しいんです。難しいことは何もありません。まずは店の戸を開けて、「こんにちは」と言ってみてください。</span>
+      <span class="lang-en">Nothing makes us happier than seeing a traveler from far away catch their first fish in this bay and smile. There's nothing complicated about it. Just open our door and say "konnichiwa."</span>
+      <span class="sig lang-jp">— 太田釣具店 店主</span>
+      <span class="sig lang-en">— Owner, Ota Fishing Tackle</span>
+    </blockquote>
+  </div>
+</section>
+
+<div class="seigaiha" aria-hidden="true"></div>
+
+<!-- アクセス -->
+<section class="access" id="access">
+  <div class="sec-head">
+    <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2 C6 2 4 5 4 8 C4 12 10 18 10 18 C10 18 16 12 16 8 C16 5 14 2 10 2 Z" fill="none" stroke="#20415E" stroke-width="2"/><circle cx="10" cy="8" r="2" fill="#20415E"/></svg>
+    <div>
+      <div class="sub">ACCESS</div>
+      <h3 class="lang-jp">店へのご案内</h3>
+      <h3 class="lang-en">Getting here</h3>
+    </div>
+  </div>
+  <div class="access-grid">
+    <dl>
+      <dt class="lang-jp">住所</dt><dt class="lang-en">Address</dt>
+      <dd class="lang-jp">〒933-0105 富山県高岡市伏木湊町4-2</dd>
+      <dd class="lang-en">4-2 Fushiki-Minatomachi, Takaoka, Toyama 933-0105, Japan</dd>
+      <dt class="lang-jp">アクセス</dt><dt class="lang-en">By train</dt>
+      <dd class="lang-jp">JR氷見線「伏木駅」から徒歩約○分/雨晴海岸へは氷見線で2駅</dd>
+      <dd class="lang-en">A short walk from JR Fushiki Station (Himi Line) — Amaharashi Coast is just two stops away.</dd>
+      <dt class="lang-jp">営業時間</dt><dt class="lang-en">Hours</dt>
+      <dd class="lang-jp">9:00 – 19:00 / 定休日:不定休(お出かけ前にお電話いただくと確実です)</dd>
+      <dd class="lang-en">9:00 – 19:00 / Closed irregularly — please call ahead to make sure we're open.</dd>
+      <dt class="lang-jp">お問い合わせ</dt><dt class="lang-en">Contact</dt>
+      <dd class="lang-jp">TEL <a href="tel:0766440449" style="color:inherit;">0766-44-0449</a></dd>
+      <dd class="lang-en">TEL <a href="tel:+81766440449" style="color:inherit;">+81-766-44-0449</a></dd>
+    </dl>
+    <div class="map-ph">
+      <span class="lang-jp">ここに Google マップを埋め込み<br>(iframe を後で差し込み)</span>
+      <span class="lang-en">Google Maps embed goes here<br>(insert iframe later)</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-title lang-jp">太田釣具店</div>
+  <div class="f-title lang-en">OTA FISHING TACKLE</div>
+  <small class="lang-jp">富山県高岡市伏木湊町 — 百年前と同じ港町で、今日も店を開けています。</small>
+  <small class="lang-en">Fushiki-Minatomachi, Takaoka, Toyama — open in the same port town for over a century.</small>
+</footer>
+
+<script>
+function setLang(l){
+  document.body.classList.toggle('en', l==='en');
+  document.documentElement.lang = l==='en' ? 'en' : 'ja';
+  document.getElementById('btn-jp').classList.toggle('active', l==='jp');
+  document.getElementById('btn-en').classList.toggle('active', l==='en');
+}
+</script>
+</body>
+</html>
